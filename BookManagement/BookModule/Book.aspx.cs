@@ -39,6 +39,17 @@ namespace BookManagement.BookModule
             string filePath = null;
             if (fileCoverPhoto.HasFile)
             {
+                //check file size
+                //var contentlength = fileCoverPhoto.PostedFile.ContentLength;
+
+                //contenlength == 1024*2
+                //{
+                     //Check for Extension
+                       //{
+                           
+                       //}
+                //}
+
                 string guidId = Guid.NewGuid().ToString();
                 string FileName = Path.GetFileNameWithoutExtension(fileCoverPhoto.PostedFile.FileName) +
                     "_" + guidId + Path.GetExtension(fileCoverPhoto.PostedFile.FileName);
