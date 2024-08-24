@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BookModule\Book.aspx" />
     <Content Include="BookModule\BookCategory.aspx" />
     <Content Include="Content\bootstrap\css\bootstrap.css" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css" />
@@ -78,6 +79,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookModule\Book.aspx.cs">
+      <DependentUpon>Book.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookModule\Book.aspx.designer.cs">
+      <DependentUpon>Book.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BookModule\BookCategory.aspx.cs">
       <DependentUpon>BookCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -102,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\BookCoverPhotot\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
