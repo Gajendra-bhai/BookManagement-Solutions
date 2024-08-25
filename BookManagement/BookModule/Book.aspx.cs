@@ -36,27 +36,52 @@ namespace BookManagement.BookModule
         protected void btnSave_Click(object sender, EventArgs e)
         {
             //string FolderName = "BookCoverPhotot";
+            string CoverPhotoFileName = null;
             string filePath = null;
+            int FileSize = 0;
+            
             if (fileCoverPhoto.HasFile)
             {
+               
+                FileSize = fileCoverPhoto.PostedFile.ContentLength;
+                double MaxSizeofimg = FileSize / (1024 * 1024);
+                String UploadFileName = fileCoverPhoto.PostedFile.FileName;
+                String FileExtension = Path.GetExtension(UploadFileName);
+                String[] Extension = { ".png", ".jpeg", ".jpg" };
+                 if(MaxSizeofimg > 2)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('File Size Should be less The 2MB');", true);
+
+               }
+                 else if(!Extension.Contains(FileExtension))
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Image extension should be in .png,.jpeg,.jpg format');", true);
+                }
+                else
+                {
+                    string guidId = Guid.NewGuid().ToString();
+                    string FileName = Path.GetFileNameWithoutExtension(fileCoverPhoto.PostedFile.FileName) +
+                        "_" + guidId + Path.GetExtension(fileCoverPhoto.PostedFile.FileName);
+
+                    filePath = Path.Combine(Server.MapPath("~/Content/BookCoverPhotot"), FileName);
+
+                    fileCoverPhoto.PostedFile.SaveAs(filePath);
+                    CoverPhotoFileName = Path.Combine("/Content/BookCoverPhotot", FileName);
+                }
                 //check file size
                 //var contentlength = fileCoverPhoto.PostedFile.ContentLength;
 
                 //contenlength == 1024*2
                 //{
-                     //Check for Extension
-                       //{
-                           
-                       //}
+                //Check for Extension
+                //{
+
+                //}
                 //}
 
-                string guidId = Guid.NewGuid().ToString();
-                string FileName = Path.GetFileNameWithoutExtension(fileCoverPhoto.PostedFile.FileName) +
-                    "_" + guidId + Path.GetExtension(fileCoverPhoto.PostedFile.FileName);
 
-                filePath = Path.Combine(Server.MapPath("~/Content/BookCoverPhotot"), FileName);
 
-                fileCoverPhoto.PostedFile.SaveAs(filePath);
+               
             }
             BookEntity book = new BookEntity()
             {
@@ -66,7 +91,7 @@ namespace BookManagement.BookModule
                 Price = Convert.ToInt32(txtPrice.Text),
                 Discription = txtAreabookDiscription.Text,
                 CategoryId = Convert.ToInt32(DdlCategory.SelectedValue),
-                CoverPhotoPath = filePath
+                CoverPhotoPath = CoverPhotoFileName
             };
 
             if (bookRepository.Add(book))

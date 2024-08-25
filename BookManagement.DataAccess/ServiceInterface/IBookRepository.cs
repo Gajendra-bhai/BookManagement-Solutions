@@ -10,5 +10,6 @@ namespace BookManagement.DataAccess.ServiceInterface
     public interface IBookRepository
     {
         bool Add(BookEntity entity);
+        List<BookProduct> GetBookProducts();
     }
 }

@@ -53,5 +53,42 @@ namespace BookManagement.DataAccess.Service
                 return false;
             }
         }
+
+        public List<BookProduct> GetBookProducts()
+        {
+            try
+            {
+                List<BookProduct> products = new List<BookProduct>();
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("spGetBooks", conn);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            products.Add(new BookProduct()
+                            {
+                                BookId = Convert.ToInt32(reader["BookId"]),
+                                Title = reader["Title"].ToString(),
+                                CoverPhotoPath = reader["CoverPhotoPath"].ToString(),
+                                Price = Convert.ToInt32(reader["Price"]),
+                            });
+                        }
+                    }
+                    conn.Close();
+                }
+                return products;
+
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
     }
 }
