@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\Login.aspx" />
     <Content Include="BookModule\Book.aspx" />
     <Content Include="BookModule\BookCategory.aspx" />
     <Content Include="Content\BookCoverPhotot\images.jpg" />
@@ -76,11 +77,19 @@
     <Content Include="Content\jquery\jquery.min.js" />
     <Content Include="Content\toastr\toastr.css" />
     <Content Include="Content\toastr\toastr.min.js" />
+    <Content Include="Customer\ProductDetails.aspx" />
     <Content Include="Customer\Products.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BookModule\Book.aspx.cs">
       <DependentUpon>Book.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -94,6 +103,13 @@
     </Compile>
     <Compile Include="BookModule\BookCategory.aspx.designer.cs">
       <DependentUpon>BookCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\ProductDetails.aspx.cs">
+      <DependentUpon>ProductDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\ProductDetails.aspx.designer.cs">
+      <DependentUpon>ProductDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\Products.aspx.cs">
       <DependentUpon>Products.aspx</DependentUpon>

@@ -46,8 +46,10 @@
     <Compile Include="Entity\BookProduct.cs" />
     <Compile Include="Entity\CategoryEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceInterface\IApplicationUserService.cs" />
     <Compile Include="ServiceInterface\IBookRepository.cs" />
     <Compile Include="ServiceInterface\ICategoryRepository.cs" />
+    <Compile Include="Service\ApplicationUserService.cs" />
     <Compile Include="Service\BookRepository.cs" />
     <Compile Include="Service\CategoryRepository.cs" />
   </ItemGroup>

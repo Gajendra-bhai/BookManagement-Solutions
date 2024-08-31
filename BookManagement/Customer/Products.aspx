@@ -26,7 +26,7 @@
                             <h5 class="card-title">Price &#8377; &nbsp; 
                                 <asp:Label runat="server" Text='<%# Eval("Price") %>'></asp:Label>
                             </h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href='ProductDetails.aspx?id=<%# string.Format("{0}",Eval("BookId")) %>&category=programming' class="btn btn-primary">View Details</a>
                         </div>
                     </div>
                 </div>
