@@ -28,6 +28,7 @@ namespace BookManagement.Account
                     string password = ck["password"];
                     if (applicationUserService.Validate(userid, password))
                     {
+                        Session["CurrentUserIdentity"] = userid;
                         Response.Redirect("~/BookModule/BookCategory.aspx");
                     }
 
@@ -53,6 +54,7 @@ namespace BookManagement.Account
                     Response.Cookies.Add(ck);
 
                 }
+                Session["CurrentUserIdentity"] = UserId;
                 Response.Redirect("~/BookModule/BookCategory.aspx");
             }
             else

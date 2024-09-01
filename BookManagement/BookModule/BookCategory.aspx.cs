@@ -33,11 +33,23 @@ namespace BookManagement.BookModule
         {
             CategoryEntity categoryEntity = new CategoryEntity()
             {
-                CategoryId = (hdbCategoryId.Value != "" ? Convert.ToInt32(hdbCategoryId.Value) : 0),
+                //CategoryId = (hdbCategoryId.Value != "" ? Convert.ToInt32(hdbCategoryId.Value) : 0),
+                CategoryId = (ViewState["BookCatId"] != null ? Convert.ToInt32(ViewState["BookCatId"]) : 0),
                 CategoryName = txtCategoryName.Text,
                 Discription = txtAreaCategoryDiscription.Text,
                 IsActive = true
             };
+
+            string CurrentUserId = string.Empty;
+            if(Session["CurrentUserIdentity"] != null)
+            {
+                CurrentUserId = Session["CurrentUserIdentity"].ToString();
+            }
+            else
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "sessionExpire", "toastr[\"info\"](\"OOPS! Session is expired.\", \"Session Expired\")", true);
+                return;
+            }
 
             if (categoryEntity.CategoryId == 0)
             {
@@ -78,7 +90,11 @@ namespace BookManagement.BookModule
         }
         private void ClearForm()
         {
-            hdbCategoryId.Value = null;
+            //hdbCategoryId.Value = null;
+            if(ViewState["BookCatId"] != null)
+            {
+                ViewState["BookCatId"] = null;
+            }
             txtCategoryName.Text = string.Empty;
             txtAreaCategoryDiscription.Text = string.Empty;
         }
@@ -110,7 +126,11 @@ namespace BookManagement.BookModule
             CategoryEntity category = categoryRepository.GetById(CatId);
             if (category != null)
             {
-                hdbCategoryId.Value = category.CategoryId.ToString();
+                //hdbCategoryId.Value = category.CategoryId.ToString();
+                if (ViewState["BookCatId"] == null)
+                {
+                    ViewState["BookCatId"] = category.CategoryId.ToString();
+                }
                 txtCategoryName.Text = category.CategoryName;
                 txtAreaCategoryDiscription.Text = category.Discription;
             }

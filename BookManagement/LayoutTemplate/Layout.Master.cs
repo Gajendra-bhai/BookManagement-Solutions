@@ -11,7 +11,14 @@ namespace BookManagement.LayoutTemplate
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["CurrentUserIdentity"] != null)
+            {
+                lblCurrentUser.Text = Session["CurrentUserIdentity"].ToString();
+            }
+            else
+            {
+                lblCurrentUser.Text = "Guest";
+            }
         }
     }
 }

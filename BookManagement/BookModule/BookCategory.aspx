@@ -9,7 +9,7 @@
 <asp:Content runat="server" ContentPlaceHolderID="contentpage">
      <div class="row">
      <div class="col-md-6 offset-3 mt-5">
-         <asp:HiddenField runat="server" ID="hdbCategoryId"></asp:HiddenField>
+       <%--  <asp:HiddenField runat="server" ID="hdbCategoryId"></asp:HiddenField>--%>
          <table class="table">
              <tr>
                  <th>Category Name</th>

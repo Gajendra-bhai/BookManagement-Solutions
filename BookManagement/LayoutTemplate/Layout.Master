@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-   
+
     <link href="../Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="../Content/toastr/toastr.css" rel="stylesheet" />
     <script src="../Content/jquery/jquery.js"></script>
@@ -45,8 +45,10 @@
                         </li>
                     </ul>
                     <div class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <%-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--%>
+                        <button class="btn btn-outline-success" type="submit">
+                            <asp:Label runat="server" ID="lblCurrentUser"></asp:Label>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -59,6 +61,15 @@
 
         <footer>
             <h2>This is Footer Section</h2>
+            <p>
+                Tota User Currently Accessing thi site : 
+               <%if (Application["TotalUser"] != null)
+                   {
+
+                       Response.Write(Application["TotalUser"].ToString());
+                   }
+               %>
+            </p>
         </footer>
     </form>
 </body>
