@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookManagement.DataAccess.Entity
 {
+    [Serializable]
     public class CategoryEntity
     {
         public int CategoryId { get; set; }

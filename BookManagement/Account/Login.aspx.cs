@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace BookManagement.Account
 {
@@ -24,11 +25,12 @@ namespace BookManagement.Account
                 HttpCookie ck = Request.Cookies["AuthUser"];
                 if (ck != null)
                 {
-                    string userid = ck["userId"];
+                    string UserId = ck["userId"];
                     string password = ck["password"];
-                    if (applicationUserService.Validate(userid, password))
+                    if (applicationUserService.Validate(UserId, password))
                     {
-                        Session["CurrentUserIdentity"] = userid;
+                        Session["CurrentUserIdentity"] = UserId;
+                        AuthorizeUser(UserId);
                         Response.Redirect("~/BookModule/BookCategory.aspx");
                     }
 
@@ -55,6 +57,7 @@ namespace BookManagement.Account
 
                 }
                 Session["CurrentUserIdentity"] = UserId;
+                AuthorizeUser(UserId);
                 Response.Redirect("~/BookModule/BookCategory.aspx");
             }
             else
@@ -62,6 +65,11 @@ namespace BookManagement.Account
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "invalid", "toastr[\"error\"](\"invalid userid or password\", \"invalid credentials\")", true);
 
             }
+        }
+
+        private void AuthorizeUser(string userId)
+        {
+            FormsAuthentication.RedirectFromLoginPage(userId, false);
         }
     }
 }

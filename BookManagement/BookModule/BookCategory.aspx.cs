@@ -14,7 +14,7 @@ namespace BookManagement.BookModule
     public partial class BookCategory : System.Web.UI.Page
     {
 
-        private readonly ICategoryRepository categoryRepository;
+        private readonly ICategoryRepository categoryRepository;    
         public BookCategory()
         {
             categoryRepository = new CategoryRepository();

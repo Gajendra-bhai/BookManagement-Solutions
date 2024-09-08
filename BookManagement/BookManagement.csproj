@@ -70,6 +70,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="BookModule\Book.aspx" />
     <Content Include="BookModule\BookCategory.aspx" />
+    <Content Include="BookModule\BulkInsert.aspx" />
     <Content Include="Content\BookCoverPhotot\images.jpg" />
     <Content Include="Content\bootstrap\css\bootstrap.css" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css" />
@@ -104,6 +105,13 @@
     <Compile Include="BookModule\BookCategory.aspx.designer.cs">
       <DependentUpon>BookCategory.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BookModule\BulkInsert.aspx.cs">
+      <DependentUpon>BulkInsert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookModule\BulkInsert.aspx.designer.cs">
+      <DependentUpon>BulkInsert.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customer\ProductDetails.aspx.cs">
       <DependentUpon>ProductDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -133,6 +141,7 @@
   <ItemGroup>
     <Content Include="libman.json" />
     <Content Include="LayoutTemplate\Layout.Master" />
+    <Content Include="Account\Web.config" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
